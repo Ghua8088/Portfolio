@@ -240,3 +240,6 @@ body:not(.dark-mode) .clouds {
         opacity: 0;
     }
 }
+img.no-invert {
+    filter: none;
+}

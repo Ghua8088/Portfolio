@@ -79,10 +79,9 @@ function checkSystemDarkMode() {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark-mode');
         toggleButton.innerText = '🌙';
-        body.img.style.filter = 'none';    
+        const images = document.querySelectorAll('img');
+        images.forEach(img => img.classList.add('no-invert'));
     } else {
         document.body.classList.remove('dark-mode');
-        body.style.color= '#121212';
-       
     }
 }
