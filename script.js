@@ -12,6 +12,7 @@ function magnettoheader(){
 function autoDarkMode() {
     if (new Date().getHours() >= 18 || new Date().getHours() <= 6 ){
         document.body.classList.add('dark-mode');
+        toggleButton.innerText = '🌙';
     }
 }
 document.addEventListener('keydown', function(event) {
