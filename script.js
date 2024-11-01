@@ -9,6 +9,11 @@ function magnettoheader(){
         window.location.hash = '';
     }, 50);
 }
+function autoDarkMode() {
+    if (new Date().getHours() >= 18 || new Date().getHours() <= 6 ){
+        document.body.classList.add('dark-mode');
+    }
+}
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         magnettoheader()
@@ -33,19 +38,19 @@ function swishEffect() {
 }
 window.addEventListener('scroll', swishEffect);
 swishEffect();
-const starContainer = document.querySelector('.stars');
-const starcolors = ['#ffffff', '#e0f7fa', '#b2ebf2', '#80deea', '#4dd0e1', '#26c6da', '#fff59d', '#fff176', '#ffeb3b'];
-for (let i = 0; i < 50; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    star.style.left = Math.random() * 100 + 'vw';
-    star.style.top = Math.random() * 100 + 'vh';
-    star.style.width = Math.random() * 5 + 2 + 'px'; 
-    star.style.height = star.style.width; 
-    star.style.backgroundColor =  starcolors[Math.floor(Math.random() * starcolors.length)];
-    starContainer.appendChild(star);
-}
 document.addEventListener('DOMContentLoaded', function() {
+    const starContainer = document.querySelector('.stars');
+    const starcolors = ['#ffffff', '#e0f7fa', '#b2ebf2', '#80deea', '#4dd0e1', '#26c6da', '#fff59d', '#fff176', '#ffeb3b'];
+    for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.top = Math.random() * 100 + 'vh';
+        star.style.width = Math.random() * 5 + 2 + 'px'; 
+        star.style.height = star.style.width; 
+        star.style.backgroundColor =  starcolors[Math.floor(Math.random() * starcolors.length)];
+        starContainer.appendChild(star);
+    }
     const cloudContainer = document.querySelector('.clouds');
     const cloudColor = ['#ffffff', '#e0e0e0', '#f0f0f0'];
     for (let i = 0; i < 10; i++) {
@@ -58,9 +63,10 @@ document.addEventListener('DOMContentLoaded', function() {
         cloud.style.width = size + 'px'; 
         cloud.style.height = size * 0.6 + 'px'; 
         cloudContainer.appendChild(cloud);
-       
     }
     setInterval(randomcloud, 20000);
+    checkSystemDarkMode();
+    autoDarkMode();
 });
 function randomcloud(){
     clouds=document.getElementsByClassName("cloud");
@@ -72,8 +78,11 @@ function randomcloud(){
 function checkSystemDarkMode() {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark-mode');
+        toggleButton.innerText = '🌙';
+        
     } else {
         document.body.classList.remove('dark-mode');
+        body.style.color= '#121212';
+        body.img.style.filter = 'invert(1)';
     }
 }
-

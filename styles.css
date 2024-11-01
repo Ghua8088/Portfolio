@@ -189,7 +189,6 @@ body.dark-mode .stars {
 }
 .star {
     position: absolute; 
-    background-color: rgba(255, 234, 143, 0.929); 
     border-radius: 50%; 
     opacity: 0.7; 
     animation: twinkling 1.5s infinite; 
