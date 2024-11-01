@@ -19,9 +19,6 @@ document.addEventListener('keydown', function(event) {
         magnettoheader()
     }
 });
-document.addEventListener('DOMContentLoaded', function() {
-    magnettoheader();
-});
 function swishEffect() {
     const swishElements = document.querySelectorAll('.swish');
     
@@ -39,6 +36,7 @@ function swishEffect() {
 window.addEventListener('scroll', swishEffect);
 swishEffect();
 document.addEventListener('DOMContentLoaded', function() {
+    magnettoheader();
     const starContainer = document.querySelector('.stars');
     const starcolors = ['#ffffff', '#e0f7fa', '#b2ebf2', '#80deea', '#4dd0e1', '#26c6da', '#fff59d', '#fff176', '#ffeb3b'];
     for (let i = 0; i < 50; i++) {
@@ -65,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
         cloudContainer.appendChild(cloud);
     }
     setInterval(randomcloud, 20000);
-    checkSystemDarkMode();
     autoDarkMode();
 });
 function randomcloud(){
@@ -73,15 +70,5 @@ function randomcloud(){
     for (let i=0;i<clouds.length;i++){
         clouds[i].style.left=Math.random() * 100 + 'vw';
         clouds[i].style.top = Math.random() * 100 + 'vh';
-    }
-}
-function checkSystemDarkMode() {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark-mode');
-        toggleButton.innerText = '🌙';
-        const images = document.querySelectorAll('img');
-        images.forEach(img => img.classList.add('no-invert'));
-    } else {
-        document.body.classList.remove('dark-mode');
     }
 }
