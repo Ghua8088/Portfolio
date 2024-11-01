@@ -66,6 +66,7 @@ section {
     list-style: none;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap; 
 }
 #languages li, #Framework li{
     padding: 5%;
