@@ -241,7 +241,10 @@ body:not(.dark-mode) .clouds {
     }
 }
 @media (prefers-color-scheme: dark) {
-    img {
+    body.dark-mode #contact img , body.dark-mode #languages img, body.dark-mode #Framework img{
+        filter: invert(0);
+    }
+    body.dark-mode #contact img , body.dark-mode #languages img, body.dark-mode #Framework img{
         filter: invert(1);
     }
 }
