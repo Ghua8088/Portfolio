@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-padding: 83px;
+    scroll-behavior: smooth;
+    transition: 1s ease;
+    position: relative;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color : rgba(152, 199, 255, 0.341);   
+}
+button{
+    background-color: transparent;
+}
+a{
+    font-style: italic;
+}
+header {
+    text-align: center;
+    padding: 2rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
+    scroll-snap-align: start;
+    justify-content: center;
+    align-items: center; 
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-family: 'Satisfy', cursive;
+    color: #333;
+}
+header a{
+    text-decoration: none;
+    padding: 5px;
+    font-style: underline;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #666;
+}
+header button {
+    background-color:transparent;
+    font-style: italic;
+    font-size: 1.2rem;
+    border: none;
+}
+section {
+    width: 90%;
+    max-width: 800px;
+    margin: 2rem 0;
+}
+#languages ul ,#Framework ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+#languages li, #Framework li{
+    padding: 5%;
+}
+#languages img ,#Framework img{
+    width:3rem;
+    height: auto;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #222;
+    margin-bottom: 1rem;
+}
+
+#about p,
+#contact p {
+    margin-bottom: 1rem;
+}
+#contact ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+#contact img{
+    width: 1rem;
+    height: 1rem;
+}
+#projects .project {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    background-color: rgba(50, 56, 63, 0.341);
+}
+
+.project h3 {
+    font-size: 1.4rem;
+    color: #333;
+}
+
+.project p {
+    margin: 0.5rem 0;
+}
+
+.project a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+footer {
+    margin-top: 3rem;
+    padding: 1rem;
+    background-color: #f4f4f4;
+    width: 100%;
+    text-align: center;
+    color: #888;
+}
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration:overline;
+}
+body.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+body.dark-mode header h1{
+    color: #f1f1f1;
+}
+
+body.dark-mode .project {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    border-color: #333;
+}
+body.dark-mode footer {
+    background-color: #1e1e1e;
+    color: #888;
+}
+
+body.dark-mode button {
+    background-color: transparent;
+    color: #333;
+}
+body.dark-mode h2,body.dark-mode h3{
+    color:#ddd;
+}
+body.dark-mode #contact img , body.dark-mode #languages img, body.dark-mode #Framework img{
+    filter: invert(1);
+}
+.swish {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.6s ease-out;
+}
+.swish.active {
+    opacity: 1;
+    transform: translateY(10px);
+}
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+    display: none;
+}
+
+body.dark-mode .stars {
+    display: block; 
+    background-size: 10px 10px;
+    animation: twinkling 1.5s infinite; 
+}
+.star {
+    position: absolute; 
+    background-color: rgba(255, 234, 143, 0.929); 
+    border-radius: 50%; 
+    opacity: 0.7; 
+    animation: twinkling 1.5s infinite; 
+}
+@keyframes twinkling {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+.clouds{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+    display: none;
+    z-index: -1;
+}
+.cloud{
+    position: absolute;
+    background: #fff; 
+    border-radius: 50%;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    animation: flowing 20s infinite;
+    filter: invert(0.8);
+    background-color: transparent;
+    
+}
+
+body:not(.dark-mode) .clouds {
+    display: block; 
+}
+@keyframes flowing{
+    0% {
+        transform: translateX(50%);
+    }
+    50% {
+        transform: translateX(25%);
+    }
+    100% {
+        transform:  translateX(-30%);
+        opacity: 0;
+    }
+}
