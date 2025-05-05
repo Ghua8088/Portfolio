@@ -1,7 +1,10 @@
 const toggleButton = document.getElementById('darkModeToggle');
+const leetCard = document.querySelector('#leetcode img');   
+
 toggleButton.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     toggleButton.innerText = document.body.classList.contains('dark-mode') ? '🌙' : '☀️';
+    updateLeetCardTheme(); 
 });
 function magnettoheader(){
     window.location.hash = '#header';
@@ -13,6 +16,7 @@ function autoDarkMode() {
     if (new Date().getHours() >= 18 || new Date().getHours() <= 6 ){
         document.body.classList.add('dark-mode');
         toggleButton.innerText = '🌙';
+        updateLeetCardTheme(); 
     }
 }
 document.addEventListener('keydown', function(event) {
@@ -22,7 +26,6 @@ document.addEventListener('keydown', function(event) {
 });
 function swishEffect() {
     const swishElements = document.querySelectorAll('.swish');
-    
     swishElements.forEach((element) => {
         const elementPosition = element.getBoundingClientRect().top;
         const viewportHeight = window.innerHeight;
@@ -65,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     setInterval(randomcloud, 20000);
     autoDarkMode();
+    updateLeetCardTheme(); 
 });
 function randomcloud(){
     clouds=document.getElementsByClassName("cloud");
@@ -72,4 +76,11 @@ function randomcloud(){
         clouds[i].style.left=Math.random() * 100 + 'vw';
         clouds[i].style.top = Math.random() * 100 + 'vh';
     }
+}
+function updateLeetCardTheme() {
+    const darkModeActive = document.body.classList.contains('dark-mode');  // Check current dark mode state
+    const theme = darkModeActive ? 'dark' : 'light';
+    const username = 'Ghua8088';
+    const url = `https://leetcard.jacoblin.cool/${username}?theme=${theme}&font=Roboto&ext=heatmap`;
+    leetCard.src = url; // Update the LeetCard src with the appropriate theme
 }
