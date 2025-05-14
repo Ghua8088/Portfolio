@@ -40,38 +40,35 @@ function setMoonPhase(moon, date = new Date()) {
 }
 function autoDarkMode() {
     const currentHour = new Date().getHours();
-    if (currentHour >= 20 || currentHour <= 6) {
+    const isNight = currentHour >= 20 || currentHour <= 6;
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    const radius = screenHeight / 4;
+    const centerX = screenWidth / 2;
+    const centerY = screenHeight / 2;
+    let angle, posX, posY;
+    if (isNight) {
         document.body.classList.add('dark-mode');
         setMoonPhase(moon);
-        sun.style.visibility='hidden';
-        moon.style.visibility='visible';
-        toggleButton.top = currentHour;
-        updateLeetCardTheme();
+        sun.style.visibility = 'hidden';
+        moon.style.visibility = 'visible';
         let hour = currentHour >= 20 ? currentHour : currentHour + 24;
         let nightProgress = (hour - 20) / 10;
-        const screenWidth = window.innerWidth;
-        const screenHeight = window.innerHeight;
-        const radius = screenHeight / 4;
-        const angle = nightProgress * Math.PI;
-        const centerX = screenWidth / 2;
-        const centerY = screenHeight / 2;
-        const moonX = centerX + radius * Math.cos(angle - Math.PI);
-        const moonY = centerY + radius * Math.sin(angle - Math.PI);
-        toggleButton.style.left = `${moonX}px`;
-        toggleButton.style.top = `${moonY}px`;
-    }else{
-        dayProgress = (currentHour - 6) / 14;
-        const screenWidth = window.innerWidth;
-        const screenHeight = window.innerHeight;
-        const radius = screenHeight / 4;
-        const angle = dayProgress * Math.PI;
-        const centerX = screenWidth / 2;
-        const centerY = screenHeight / 2;
-        const sunX = centerX + radius * Math.cos(angle - Math.PI);
-        const sunY = centerY + radius * Math.sin(angle - Math.PI);
-        toggleButton.style.left = `${sunX}px`;
-        toggleButton.style.top = `${sunY}px`;
+        angle = nightProgress * Math.PI;
+    } else {
+        document.body.classList.remove('dark-mode');
+        sun.style.visibility = 'visible';
+        moon.style.visibility = 'hidden';
+        let dayProgress = (currentHour - 6) / 14;
+        angle = dayProgress * Math.PI;
     }
+    posX = centerX + radius * Math.cos(angle - Math.PI);
+    posY = centerY + radius * Math.sin(angle - Math.PI);
+    posX = Math.max(50, Math.min(screenWidth - 50, posX));
+    posY = Math.max(50, Math.min(screenHeight - 50, posY));
+    toggleButton.style.left = `${posX}px`;
+    toggleButton.style.top = `${posY}px`;
+    updateLeetCardTheme();
 }
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
