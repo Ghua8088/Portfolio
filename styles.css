@@ -30,6 +30,7 @@
     height: 100px;
     width: 100px;
     animation: glowPulse 3s ease-in-out infinite;
+    opacity: 1;
 }
 #sun img{
     animation: glowPulse 3s ease-in-out infinite;
