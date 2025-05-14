@@ -319,4 +319,31 @@ body:not(.dark-mode) .clouds {
     z-index: 0;
     font-size:50px;
 }
+@media (max-width: 768px) {
+    #sun, #moon {
+        width: 150px;
+        height: 150px;
+    }
 
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p,
+    header button {
+        font-size: 1rem;
+    }
+
+    section {
+        width: 95%;
+        margin: 1rem 0;
+    }
+
+    #languages img, #Framework img {
+        width: 2.2rem;
+    }
+
+    #darkModeToggle {
+        font-size: 30px;
+    }
+}
