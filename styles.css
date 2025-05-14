@@ -6,8 +6,10 @@
     z-index: 1;
 }
 #sun,#moon{
-    width:300px;
-    height:300px;
+    max-width: 30vw;
+    max-height: 30vw;
+    width: 300px;
+    height: 300px;
     animation: interact 2s infinite;
     mix-blend-mode: screen;
     opacity: 0.8;
@@ -79,7 +81,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color : rgba(106, 218, 255, 0.332);   
+    background-color : rgba(106, 218, 255, 0.332);
 }
 button{
     background-color: transparent;
@@ -307,9 +309,6 @@ body:not(.dark-mode) .clouds {
 }
 @media (prefers-color-scheme: dark) {
     body.dark-mode #contact img , body.dark-mode #languages img, body.dark-mode #Framework img{
-        filter: invert(0);
-    }
-    body.dark-mode #contact img , body.dark-mode #languages img, body.dark-mode #Framework img{
         filter: invert(1);
     }
 }
@@ -321,10 +320,18 @@ body:not(.dark-mode) .clouds {
 }
 @media (max-width: 768px) {
     #sun, #moon {
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px; 
+        max-width: 30vw; 
+        max-height: 30vw;
+        position:fixed;
+        top: 20%; 
+        left: 20%; 
     }
-
+    #sun{
+        width:20%;
+        height:20%;
+    }
     header h1 {
         font-size: 1.8rem;
     }

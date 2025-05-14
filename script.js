@@ -66,6 +66,7 @@ function autoDarkMode() {
     posY = centerY + radius * Math.sin(angle - Math.PI);
     posX = Math.max(50, Math.min(screenWidth - 50, posX));
     posY = Math.max(50, Math.min(screenHeight - 50, posY));
+    sun.style.transform = `translate(${posX}px, ${posY}px) rotate(${angle}rad)`;
     toggleButton.style.left = `${posX}px`;
     toggleButton.style.top = `${posY}px`;
     updateLeetCardTheme();
